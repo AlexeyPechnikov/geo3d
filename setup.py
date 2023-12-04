@@ -9,7 +9,7 @@
 # Licensed under the BSD 3-Clause License (see LICENSE for details)
 # ----------------------------------------------------------------------------
 
-from setuptools import setup
+from setuptools import setup, find_packages
 import urllib.request
 
 # read the contents of your README file
@@ -31,7 +31,7 @@ setup(
     author='Alexey Pechnikov',
     author_email='pechnikov@mobigroup.ru',
     license='BSD-3-Clause',
-    packages=['geomed3d'],
+    packages=packages=find_packages(),
     install_requires=['xarray>=0.19.0',
                       'numpy>=1.22.4',
                       'numba',
