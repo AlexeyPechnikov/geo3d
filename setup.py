@@ -45,7 +45,6 @@ setup(
                       'rioxarray',
                       'h5netcdf>=1.2.0',
                       'h5py',
-                      'zipfile',
                       'earthengine-api',
                       'vtk'
                       ],
