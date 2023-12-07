@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "Monte_Cristo_AOI_10x10km",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::32611" } },
+"features": [
+{ "type": "Feature", "properties": { "id": "0", "name": "AOI M 6.5 - Monte Cristo Range Earthquake" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 418279.795571689959615, 4218874.675674307160079 ], [ 428311.788754091539886, 4218780.105961360037327 ], [ 428399.846783468150534, 4228765.03862096183002 ], [ 418380.178917586570606, 4228859.68112902995199 ], [ 418279.795571689959615, 4218874.675674307160079 ] ] ] } }
+]
+}
