@@ -216,3 +216,57 @@ class geomed3d():
             return da
         pcnt = np.nanpercentile(da.values.reshape(-1), q)
         return xr.DataArray(np.clip(da.values, pcnt[0], pcnt[1]), coords=da.coords).rename(da.name)
+
+    #https://stackoverflow.com/questions/39073973/how-to-generate-a-matrix-with-circle-of-ones-in-numpy-scipy
+    @staticmethod
+    def unit_circle(r):
+        A = np.arange(-r,r+1)**2
+        dists = np.sqrt( A[:,None] + A)
+        # circle
+        #return (np.abs(dists-r)<=0).astype(int)
+        # filled circle
+        if r <= 2:
+            return ((dists-r)<=0).astype(int)
+        return ((dists-r)<=0.5).astype(int)
+
+    @staticmethod
+    def median_filter(da, r=1, rz=1):
+        from scipy.ndimage import median_filter
+        # z, y, x
+        footprint = np.array((2*rz+1)*[geomed3d.unit_circle(r)])
+        return xr.DataArray(median_filter(da.values, footprint=footprint, mode='nearest'), coords=da.coords).rename(da.name)
+
+    @staticmethod
+    def idw_filter(da, k=30):
+        #http://earthpy.org/interpolation_between_grids_with_ckdtree.html
+        #http://geoexamples.blogspot.sg/2012/05/creating-grid-from-scattered-data-using.html
+        #https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.cKDTree.html
+        from scipy.spatial import cKDTree
+        from itertools import product
+    
+        xs, ys, zs = da.values.shape
+        x, y, z = zip(*product(range(xs), range(ys), range(zs)))
+        xt = range(xs)
+        yt = range(ys)
+        zt = range(zs)
+        zt = [0.707*iz for iz in zt]
+        tree = cKDTree(list(zip(x, y, [0.707*iz for iz in z])))
+    
+        arr_idws = []
+        for x in xt:
+            y, z = zip(*product(yt, zt))
+            d, inds = tree.query(list(zip(len(y)*[x], y, z)), k = k)
+            # idw
+            w = 1.0 / d[:,1:]**2
+            arr_idw = np.nansum(w * da.values.flatten()[inds[:,1:]], axis=1) / \
+                np.nansum(w*(da.values.flatten()[inds[:,1:]]/da.values.flatten()[inds[:,1:]]), axis=1)
+            # simple stats
+            #arr_idw = np.std(arr.flatten()[inds], axis=1)
+            arr_idw.shape = (len(yt), len(zt))
+            arr_idws.append(arr_idw)
+
+        idw = xr.DataArray(arr_idws,
+                                  coords=[da.z.values,da.y.values,da.x.values],
+                                  dims=['z','y','x'])
+
+        return xr.DataArray(idw, coords=da.coords).rename(da.name)
