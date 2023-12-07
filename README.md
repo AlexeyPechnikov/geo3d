@@ -52,6 +52,7 @@ Pay attention, only the density output is available because I have been selling 
 
 <img src="https://github.com/mobigroup/geomed3d/assets/7342379/645488b6-41b1-447c-bc75-d23fb36d6972" width="50%"><img src="https://github.com/mobigroup/geomed3d/assets/7342379/1962b34a-08bf-4959-967b-df85b5461974" width="50%">
 
-[3D Lineament Geological Model of a 6.5-Magnitude Earthquake in Monte Cristo, Nevada, USA](https://www.patreon.com/posts/3d-lineament-of-80321309) The dynamic model is available on YouTube as [4D Model for M6.5 - Monte Cristo Range Earthquake 2020-05-15](https://www.youtube.com/watch?v=ZVWKQCxPLlI)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1zZLOyRUXIXCwzba5aCcKRCZ4M3llLAIr?usp=sharing) [3D Lineaments and Inversion Geological Models of a 6.5-Magnitude Earthquake in Monte Cristo, Nevada, USA](https://www.patreon.com/posts/3d-lineament-of-80321309) The dynamic models are available on YouTube as [4D Model for M6.5 - Monte Cristo Range Earthquake 2020-05-15](https://www.youtube.com/watch?v=ZVWKQCxPLlI) and [4D Lineament Model for M6.5 - Monte Cristo Range Earthquake 2020-05-15](https://www.youtube.com/watch?v=t6gLo__gyIM)
 
 ![](https://github.com/mobigroup/geomed3d/assets/7342379/c21c1cbe-d8c2-4bf8-acd7-d7c9ba4b43e8)
+
