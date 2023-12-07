@@ -58,24 +58,24 @@ class vtk():
             vals = da.values
 
         header = """# vtk DataFile Version 1.0
-    vtk output
-    BINARY
-    DATASET STRUCTURED_POINTS
-    DIMENSIONS %d %d %d
-    ASPECT_RATIO %f %f %f
-    ORIGIN %f %f %f
-    POINT_DATA %d
-    SCALARS %s %s
-    LOOKUP_TABLE default
-    """ % (da.x.shape[0],da.y.shape[0],da.z.shape[0],
-                    (np.nanmax(da.x.values)-np.nanmin(da.x.values))/(da.x.shape[0]-1),
-                    (np.nanmax(da.y.values)-np.nanmin(da.y.values))/(da.y.shape[0]-1),
-                    (np.nanmax(da.z.values)-np.nanmin(da.z.values))/(da.z.shape[0]-1),
-                    np.nanmin(da.x.values),
-                    np.nanmin(da.y.values),
-                    np.nanmin(da.z.values),
-                    da.x.shape[0]*da.y.shape[0]*da.z.shape[0],
-                    da.name, vtk_types[dtype])
+vtk output
+BINARY
+DATASET STRUCTURED_POINTS
+DIMENSIONS %d %d %d
+ASPECT_RATIO %f %f %f
+ORIGIN %f %f %f
+POINT_DATA %d
+SCALARS %s %s
+LOOKUP_TABLE default
+"""          % (da.x.shape[0], da.y.shape[0], da.z.shape[0],
+                (da.x[-1] - da.x[0])/(da.x.shape[0]-1),
+                (da.y[-1] - da.y[0])/(da.y.shape[0]-1),
+                (da.z[-1] - da.z[0])/(da.z.shape[0]-1),
+                da.x[0],
+                da.y[0],
+                da.z[0],
+                da.x.shape[0]*da.y.shape[0]*da.z.shape[0],
+                da.name, vtk_types[dtype])
 
         with open(filename, 'wb') as f:
             if sys.version_info >= (3, 0):
@@ -93,23 +93,23 @@ class vtk():
 
         da = ds.transpose('z','y','x')
         header = """# vtk DataFile Version 4.2
-    vtk output
-    BINARY
-    DATASET STRUCTURED_POINTS
-    DIMENSIONS %d %d %d
-    SPACING %f %f %f
-    ORIGIN %f %f %f
-    POINT_DATA %d
-    VECTORS %s float
-    """ % (da.x.shape[0],da.y.shape[0],da.z.shape[0],
-                    (np.nanmax(da.x.values)-np.nanmin(da.x.values))/(da.x.shape[0]-1),
-                    (np.nanmax(da.y.values)-np.nanmin(da.y.values))/(da.y.shape[0]-1),
-                    (np.nanmax(da.z.values)-np.nanmin(da.z.values))/(da.z.shape[0]-1),
-                    np.nanmin(da.x.values),
-                    np.nanmin(da.y.values),
-                    np.nanmin(da.z.values),
-                    da.x.shape[0]*da.y.shape[0]*da.z.shape[0],
-                    name)
+vtk output
+BINARY
+DATASET STRUCTURED_POINTS
+DIMENSIONS %d %d %d
+SPACING %f %f %f
+ORIGIN %f %f %f
+POINT_DATA %d
+VECTORS %s float
+"""          % (da.x.shape[0], da.y.shape[0], da.z.shape[0],
+                (da.x[-1] - da.x[0])/(da.x.shape[0]-1),
+                (da.y[-1] - da.y[0])/(da.y.shape[0]-1),
+                (da.z[-1] - da.z[0])/(da.z.shape[0]-1),
+                da.x[0],
+                da.y[0],
+                da.z[0],
+                da.x.shape[0]*da.y.shape[0]*da.z.shape[0],
+                name)
 
         with open(filename, 'wb') as f:
             f.write(bytes(header,'utf-8'))
