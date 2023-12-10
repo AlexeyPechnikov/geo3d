@@ -8,7 +8,7 @@ Pay attention, only the density output is available because I have been selling 
 
 ### Theoretical Basics
 
-[Spectral Coherence between Gravity and Bathymetry Grids using GeoMed3D Python Library](https://www.patreon.com/posts/spectral-between-94060379)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/156uraY81yPr2DLIEw3V8G_QbHJQc_U1j?usp=sharing) [Spectral Coherence between Gravity and Bathymetry Grids using GeoMed3D Python Library](https://www.patreon.com/posts/spectral-between-94060379)
 
 [Computer Vision Solution for the Inverse Problem of Geophysics](https://www.patreon.com/posts/computer-vision-79677450)
 
