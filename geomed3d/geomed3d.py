@@ -42,11 +42,11 @@ class geomed3d():
     @jit(nopython=True, parallel=False)
     def focal_stat(yx, r, array, matrix):
         # define empty result when processing impossible
-        nodata = (np.nan*np.empty((2,r))).astype(np.float32)
+        nodata = (np.nan*np.empty((3,r))).astype(np.float32)
         #print ('geomed_stat', yx, r, array.shape, matrix.shape)
         y, x = yx
         # return original values to test
-        #return (array[y,x]*np.ones((2,r))).astype(np.float32)
+        #return (array[y,x]*np.ones((3,r))).astype(np.float32)
         # check window location inside raster
         ysize, xsize = array.shape
         if x < r or y < r or x >= xsize - r or y >= ysize - r:
@@ -73,9 +73,9 @@ class geomed3d():
         means2 = 1.*means2/counts
         # return statistics calculated for 4+ pixels only
         outmean = np.where(counts>=4, means1, np.nan)
-        outstd  = np.where(counts>=4, means2 - means1**2, np.nan)
+        outstd  = np.sqrt(np.where(counts>=4, means2 - means1**2, np.nan))
         # return stacked statistics
-        return np.stack((outmean, np.sqrt(outstd)/outmean)).astype(np.float32)
+        return np.stack((outmean, outstd, outstd/outmean)).astype(np.float32)
 
     #out = geomed_stat(np.array([1,1]), r, image.values, unitmask.ravel())
     #print (out.shape)
@@ -109,7 +109,7 @@ class geomed3d():
             input_core_dims=[['dim_1']],
             output_core_dims=[('stats','z')],
             output_dtypes=[np.float32],
-            dask_gufunc_kwargs={'output_sizes': {'stats': 2, 'z': r}}
+            dask_gufunc_kwargs={'output_sizes': {'stats': 3, 'z': r}}
         ).load()
 
         # vertical shift for the cube, pixels
@@ -121,7 +121,7 @@ class geomed3d():
         data = stats.values
         for idx, (values, dz) in enumerate(zip(data, (dzmax - dzs).values)):
             if dz > 0:
-                data[idx] = np.concatenate((np.nan*np.empty((2, dz if dz<r else r)), values[:,:-dz]), axis=1)
+                data[idx] = np.concatenate((np.nan*np.empty((3, dz if dz<r else r)), values[:,:-dz]), axis=1)
 
         # convert sparse statistics array to datatarray
         ys = coords[:,0]
@@ -130,7 +130,8 @@ class geomed3d():
                             'y': ys,
                             'x': xs,
                             'density':     stat[0],
-                            'anomaly':     stat[1]
+                            'alteration':  stat[1],
+                            'anomaly':     stat[2]
                             }).set_index(['y', 'x']).to_xarray()
                for stat in stats.T
               ]
