@@ -60,4 +60,4 @@ Pay attention, only the density output is available because I have been selling 
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1hjsGj-nkbE5V7P7nLsKNnz7MdvoNkwWO?usp=sharing) Gold Deposits Prediction Model on Sumbawa, Indonesia
 
-<img src="https://github.com/mobigroup/geomed3d/assets/7342379/8bf50851-6ee9-43e4-bdd6-5c9947ee4ad9" width="50%"><img src="https://github.com/mobigroup/geomed3d/assets/7342379/f39331e3-aeb0-4c7c-ba11-44a79f6b47c0" width="50%">
+<img src="https://github.com/mobigroup/geomed3d/assets/7342379/f9ad5403-eee2-4ca1-9d06-8e1db57aa7c3" width="50%"><img src="https://github.com/mobigroup/geomed3d/assets/7342379/3511b238-e630-4481-9303-7613a5b5f37f" width="50%">
