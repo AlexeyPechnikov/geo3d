@@ -36,8 +36,6 @@ Pay attention, only the density output is available because I have been selling 
 
 [Digital Geology and Machine Learning](https://www.patreon.com/posts/digital-geology-80656524)
 
-[Deep Tectonics and Structural Formation of Koverninsky Depression: Insights from GGM2013Plus Gravity Model](https://www.patreon.com/posts/deep-tectonics-80666460)
-
 [Geotectonic Structural Modeling of the Indonesian Region: A Gravitational Anomalies Analysis of WGM2012 Free-Air with a Focus on Lombok and Sumbawa Islands](https://www.patreon.com/posts/geotectonic-of-80667304)
 
 [Identifying Promising Diapir Structures for Oil and Gas in Greece’s Offshore Using Cryosat-2 and Landsat-8 Data](https://www.patreon.com/posts/identifying-for-80680314)
@@ -56,3 +54,6 @@ Pay attention, only the density output is available because I have been selling 
 
 ![](https://github.com/mobigroup/geomed3d/assets/7342379/c21c1cbe-d8c2-4bf8-acd7-d7c9ba4b43e8)
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qrh_fGQ7kNl-8F7VjrQIanKeKkS6CKAc?usp=sharing) [Deep Tectonics and Structural Formation of Koverninsky Depression: Insights from GGM2013Plus Gravity Model](https://www.patreon.com/posts/deep-tectonics-80666460)
+
+<img src="https://github.com/mobigroup/geomed3d/assets/7342379/fee3ab50-ae45-4fba-8b67-1229032e0095" width="50%"><img src="https://github.com/mobigroup/geomed3d/assets/7342379/57036120-c1ce-4860-b9de-87a4533ff8ea" width="50%">
