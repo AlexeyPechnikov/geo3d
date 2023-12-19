@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "Kumroch",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": {}, "geometry": { "type": "Polygon", "coordinates": [ [ [ 161.200059503304999, 55.693578450777601 ], [ 161.262556357559987, 55.722143229839503 ], [ 161.30142554639599, 55.692272283026597 ], [ 161.236022561776991, 55.676643262654999 ], [ 161.200059503304999, 55.693578450777601 ] ] ] } }
+]
+}
