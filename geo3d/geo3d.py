@@ -1,9 +1,9 @@
 # ----------------------------------------------------------------------------
-# GeoMed3D
+# Geo3D
 #
-# This file is part of the GeoMed3D project: https://github.com/mobigroup/geomed3d
+# This file is part of the Geo3D project: https://github.com/AlexeyPechnikov/geo3d
 #
-# Copyright (c) 2023, Alexey Pechnikov
+# Copyright (c) 2024, Alexey Pechnikov
 #
 # Licensed under the BSD 3-Clause License (see LICENSE for details)
 # ----------------------------------------------------------------------------
@@ -17,7 +17,7 @@ import dask
 ################################################################################
 # 3D Inversion Processing
 ################################################################################
-class geomed3d():
+class geo3d():
 
     @staticmethod
     def ring(r):
@@ -43,7 +43,7 @@ class geomed3d():
     def focal_stat(yx, r, array, matrix):
         # define empty result when processing impossible
         nodata = (np.nan*np.empty((3,r))).astype(np.float32)
-        #print ('geomed_stat', yx, r, array.shape, matrix.shape)
+        #print ('geo_stat', yx, r, array.shape, matrix.shape)
         y, x = yx
         # return original values to test
         #return (array[y,x]*np.ones((3,r))).astype(np.float32)
@@ -77,7 +77,7 @@ class geomed3d():
         # return stacked statistics
         return np.stack((outmean, outstd, outstd/outmean)).astype(np.float32)
 
-    #out = geomed_stat(np.array([1,1]), r, image.values, unitmask.ravel())
+    #out = geo_stat(np.array([1,1]), r, image.values, unitmask.ravel())
     #print (out.shape)
     #print (out)
     @staticmethod
@@ -94,12 +94,12 @@ class geomed3d():
         mask = da.sel(y=xr.DataArray(df_mask.y), x=xr.DataArray(df_mask.x), method='nearest')
 
         # prepare circle mask
-        unitmask = geomed3d.ring(r)
+        unitmask = geo3d.ring(r)
         pixels = mask.rename('mask').to_dataframe()[['iy','ix']].values
         coords = df_mask[['y','x']].values
 
         # define wrapper function
-        calculate = lambda yxs: np.apply_along_axis(geomed3d.focal_stat, 1, yxs, r, da.values, unitmask.ravel())
+        calculate = lambda yxs: np.apply_along_axis(geo3d.focal_stat, 1, yxs, r, da.values, unitmask.ravel())
 
         stats = xr.apply_ufunc(
             calculate,
@@ -141,8 +141,8 @@ class geomed3d():
         ds['z'] = ((dzmax -(ds['z'] + 1))*dx/np.sqrt(2))
         return ds
 
-    # stats = geomed(image, df_mask, r=100, nodask=True)
-    # stats = geomed(image, df_mask, r=100)
+    # stats = geo(image, df_mask, r=100, nodask=True)
+    # stats = geo(image, df_mask, r=100)
 
     @staticmethod
     def gaussian_range(raster0, g1, g2, backward=False):
@@ -179,7 +179,7 @@ class geomed3d():
         print (f'Calculate spectrum: {len(sigmas)} wavelengths')
         for g in sigmas:
             print (".", end = '')
-            _raster = geomed3d.gaussian_range(raster, g-.5, g+.5, backward=True)
+            _raster = geo3d.gaussian_range(raster, g-.5, g+.5, backward=True)
             _raster['r'] = g*scale
             rasters.append(_raster)
         print ()
@@ -191,8 +191,8 @@ class geomed3d():
         import numpy as np
         import pandas as pd
 
-        spectrum1 = geomed3d.spectrum(raster1, sigmas, scale)
-        spectrum2 = geomed3d.spectrum(raster2, sigmas, scale)
+        spectrum1 = geo3d.spectrum(raster1, sigmas, scale)
+        spectrum2 = geo3d.spectrum(raster2, sigmas, scale)
 
         corrs = []
         print (f'Calculate correlogram: {len(sigmas)} wavelengths')
@@ -234,7 +234,7 @@ class geomed3d():
     def median_filter(da, r=1, rz=1):
         from scipy.ndimage import median_filter
         # z, y, x
-        footprint = np.array((2*rz+1)*[geomed3d.unit_circle(r)])
+        footprint = np.array((2*rz+1)*[geo3d.unit_circle(r)])
         return xr.DataArray(median_filter(da.values, footprint=footprint, mode='nearest'), coords=da.coords).rename(da.name)
 
     @staticmethod
