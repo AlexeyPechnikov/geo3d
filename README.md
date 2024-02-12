@@ -1,12 +1,18 @@
+[![View on GitHub](https://img.shields.io/badge/GitHub-View%20on%20GitHub-blue)](https://github.com/AlexeyPechnikov/geo3d)
+[![Support on Patreon](https://img.shields.io/badge/Patreon-Support-orange.svg)](https://www.patreon.com/pechnikov)
+[![ChatGPT Assistant](https://img.shields.io/badge/ChatGPT-Assistant-green?logo=openai)](https://geo3d.dev/ai)
+
 ## Geo3D (Geology 3D): Powerful and Accessible 3D Inversion
 
-This software utilizes the fundamental physical concept of a dipole, in which a pair of unequal potentials can be represented as a magnetic or gravitational dipole. Unlike a potential, a dipole has a continuous zero-force 3D surface where the sources balance each other. Its intersection with the Earth's surface can be detected using a circular Radon edge detector and resolved into a distribution of dipoles as a direct solution because the scale of the circular structures linearly depends on the dipole's depth. To resolve ambiguity, where various potential distributions can produce the same observed field (with defined accuracy) on the surface, band-pass Gaussian filtering is applied. This transformation selects a range within the spatial frequency spectrum of the analyzed data, ensuring that the solution is unique and stable. This method is robust, numerically stable, and fast. It also explains how experienced geologists use visual morphometric analyses on gravity, magnetic, topography, and satellite imagery to predict buried geological structures. As evident, it is based on strong physics and mathematics.
+This software utilizes the fundamental physical concept of a dipole, in which a pair of unequal potentials can be represented as a magnetic or gravitational dipole. Unlike a potential, a dipole has a continuous zero-force 3D surface where the sources balance each other. Its intersection with the Earth's surface can be detected using a circular Radon edge detector and resolved into a distribution of dipoles as a direct solution because the scale of the circular structures linearly depends on the dipole's depth. To resolve ambiguity, where various potential distributions can produce the same observed field (with defined accuracy) on the surface, band-pass Gaussian filtering is applied. This transformation selects a range within the spatial frequency spectrum of the analyzed data, ensuring that the solution is unique and stable. This method is robust, numerically stable, and fast. It also explains how experienced geologists use visual morphometric analyses on gravity, magnetic, topography, and satellite imagery to predict buried geological structures. As evident, it is based on strong physics and mathematics.  In addition to the examples provided below, I also share Jupyter notebook examples on [Patreon](https://www.patreon.com/pechnikov) and provide updates on its progress through my [LinkedIn profile](https://www.linkedin.com/in/alexey-pechnikov/).
+
+<img src="https://github.com/AlexeyPechnikov/geo3d/assets/7342379/c585eace-5669-42a7-b01b-28dff8820461" width="40%" />
+
+## About Geo3D
 
 The Python library Geo3D offers an effective method for modeling 3D geological structures using the potential inversion techniques. Geo3D not only performs the inversion but also provides functions to download source datasets from the open Google Earth Engine (GEE) platform and produce 3D output in VTK files. The output can then be post-processed in open-source software like ParaView and Blender to create high-quality, dynamic 3D geological models suitable for films, and for viewing in Virtual and Augmented Reality (AR/VR) on modern iOS and Android smartphones, as well as on specialized headsets.
 
 This open-source library provides three output statistics. I also sell commercial software that detects vertical and horizontal density anomalies for gas and oil investigations and fractalities for mineral exploration tasks. Nevertheless, the open-source version is sufficient for numerous projects.
-
-<img src="https://github.com/AlexeyPechnikov/geo3d/assets/7342379/c585eace-5669-42a7-b01b-28dff8820461" width="40%" />
 
 ### Theoretical Basics
 

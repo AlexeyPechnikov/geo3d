@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # ----------------------------------------------------------------------------
-# GeoMed3d
+# Geo3d
 # 
-# This file is part of the GeoMed3D project: https://github.com/mobigroup/geomed3d
+# This file is part of the GeoMed3D project: https://github.com/AlexeyPechnikov/geo3d
 # 
 # Copyright (c) 2023, Alexey Pechnikov
 # 
@@ -17,21 +17,21 @@ import urllib.request
 #this_directory = Path(__file__).parent
 #long_description = (this_directory / "README.md").read_text()
 
-upstream_url = 'https://raw.githubusercontent.com/mobigroup/geomed3d/main/README.md'
+upstream_url = 'https://raw.githubusercontent.com/AlexeyPechnikov/geo3d/main/README.md'
 response = urllib.request.urlopen(upstream_url)
 long_description = response.read().decode('utf-8')
 
 setup(
-    name='geomed3d',
+    name='geo3d',
     version='2023.12.03',
-    description='GeoMed3D (Geologic Medium 3D) - 3D Density Inversion by Circular Hough Transform for Everyone',
+    description='Geo3D (Geology 3D): Powerful and Accessible 3D Inversion',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/mobigroup/geomed3d',
+    url='https://Geo3D.dev',
     author='Alexey Pechnikov',
-    author_email='pechnikov@mobigroup.ru',
+    author_email='alexey@pechnikov.dev',
     license='BSD-3-Clause',
-    packages=['geomed3d'],
+    packages=['geo3d'],
     install_requires=['xarray>=0.19.0',
                       'numpy>=1.22.4',
                       'numba',
@@ -57,7 +57,7 @@ setup(
         'Operating System :: POSIX :: Linux',
         'Operating System :: MacOS',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.10'
+        'Programming Language :: Python :: 3'
     ],
     python_requires='>=3.10'
 )
