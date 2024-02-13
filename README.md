@@ -1,6 +1,7 @@
 [![View on GitHub](https://img.shields.io/badge/GitHub-View%20on%20GitHub-blue)](https://github.com/AlexeyPechnikov/geo3d)
 [![Support on Patreon](https://img.shields.io/badge/Patreon-Support-orange.svg)](https://www.patreon.com/pechnikov)
 [![ChatGPT Assistant](https://img.shields.io/badge/ChatGPT-Assistant-green?logo=openai)](https://geo3d.dev/ai)
+[![AR/VR at geo3d.dev](https://img.shields.io/badge/AR%2FVR-geo3d.dev%2Far-yellow)](https://geo3d.dev/ar)
 
 ## Geo3D (Geology 3D): Powerful and Accessible 3D Inversion
 
